@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications - Nigerian Diaspora Youth Ambassador (NDYA)</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #008751; /* Nigerian Green */
+            --secondary-color: #FFFFFF; /* White */
+            --accent-color: #E6BE8A; /* Gold */
+            --text-color: #333333;
+            --light-bg: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+        }
+        
+        .navbar {
+            background-color: var(--primary-color) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand, .nav-link {
+            color: var(--secondary-color) !important;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
+        
+        .breadcrumb {
+            background-color: var(--light-bg);
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        
+        .page-header {
+            background: linear-gradient(rgba(0, 135, 81, 0.8), rgba(0, 135, 81, 0.9)), url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .section-title.text-center:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #006b40;
+            border-color: #006b40;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .bg-light-custom {
+            background-color: var(--light-bg);
+        }
+        
+        .publication-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            height: 100%;
+        }
+        
+        .publication-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .publication-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .publication-content {
+            padding: 25px;
+        }
+        
+        .publication-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .publication-tag {
+            background-color: var(--light-bg);
+            color: var(--primary-color);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .publication-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .publication-excerpt {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .filter-btn {
+            background: white;
+            border: 1px solid #e0e0e0;
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .newsletter-card {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .newsletter-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 40px 0 20px;
+        }
+        
+        .social-icons a {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+        
+        .pagination .page-link {
+            color: var(--primary-color);
+        }
+        
+        .pagination .page-item.active .page-link {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.webp" alt="NDYA Logo" class="me-2" style="height: 40px;">
+                NDYA
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+            
+                    <li class="nav-item">
+                        <a class="nav-link" href="publications.html">Publications</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="team.html">Team</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="publication.html">publication</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light ms-2" href="#donate">Donate</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Publications</h1>
+            <p class="lead">Explore our research, reports, and resources for Nigerian diaspora youth</p>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <section class="py-3">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Publications</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Publication Filter -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h2 class="section-title">Our Publications</h2>
+                    <p class="mb-4">This section features NDYA’s official news releases and public statements, providing timely updates on our initiatives, events, advocacy efforts, and organizational milestones..</p>
+                    
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All Publications</button>
+                        <button class="filter-btn" data-filter="research">Research Papers</button>
+                        <button class="filter-btn" data-filter="reports">Annual Reports</button>
+                        <button class="filter-btn" data-filter="newsletters">Newsletters</button>
+                        <button class="filter-btn" data-filter="resources">Resources</button>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="newsletter-card">
+                        <div class="newsletter-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <h4>Subscribe to Our Newsletter</h4>
+                        <p>Stay updated with our latest publications, events, and opportunities.</p>
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Enter your email">
+                            <button class="btn btn-primary" type="button">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Grid -->
+    <section class="py-5 bg-light-custom">
+        <div class="container">
+            <div class="row" id="publications-grid">
+                <!-- Publication 1 -->
+                <div class="col-lg-4 col-md-6 mb-4" data-category="research">
+                    <div class="publication-card">
+                        <img src="homeicon.jpg" alt="Research Publication" class="publication-img">
+                        <div class="publication-content">
+                            <div class="publication-meta">
+                                <span class="publication-date">June 5, 2023</span>
+                                <span class="publication-tag">Research</span>
+                            </div>
+                            <h3 class="publication-title">NNDYA Congratulates President Tinubu on His Inauguration as Nigeria’s 16th President</h3>
+                            <p class="publication-excerpt">NDYA extends warm congratulations to President Bola Ahmed Tinubu on his inauguration as Nigeria’s 16th President, wishing him success in leading the nation forward.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="https://www.vanguardngr.com/2023/06/consider-affairs-of-nigerians-in-diaspora-tinubu-told/" class="btn btn-primary" target="_blank">Read More</a>
+                                <a href="#" class="text-decoration-none"><i class="fas fa-download me-1"></i> PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Publication 2 -->
+                <div class="col-lg-4 col-md-6 mb-4" data-category="reports">
+                    <div class="publication-card">
+                        <img src="excos.jpg" alt="Annual Report" class="publication-img">
+                        <div class="publication-content">
+                            <div class="publication-meta">
+                                <span class="publication-date">January 7, 2022</span>
+                                <span class="publication-tag">Annual Report</span>
+                            </div>
+                            <h3 class="publication-title">Nigerian Diaspora Youth Ambassador resolves dispute between Nigerians in Cyprus</h3>
+                            <p class="publication-excerpt">The NDYA team stepped in to address a dispute among Nigerians in Cyprus, facilitating dialogue and helping all parties reach an amicable agreement</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="https://blueprint.ng/nigerian-diaspora-youth-ambassador-resolves-dispute-between-nigerians-in-cyprus/" class="btn btn-primary" target="_blank">Read More</a>
+                                <a href="#" class="text-decoration-none"><i class="fas fa-download me-1"></i> PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Publication 3 -->
+                <div class="col-lg-4 col-md-6 mb-4" data-category="resources">
+                    <div class="publication-card">
+                        <img src="independemce day.jpg" alt="Resource Guide" class="publication-img">
+                        <div class="publication-content">
+                            <div class="publication-meta">
+                                <span class="publication-date">September 1, 2020</span>
+                                <span class="publication-tag">Resource</span>
+                            </div>
+                            <h3 class="publication-title">Nigerian Diaspora Youth Ambassador Inaugurate Executives</h3>
+                            <p class="publication-excerpt">The Ambassador oversaw the inauguration of new executives, marking a renewed commitment to effective leadership and youth empowerment.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="https://blueprint.ng/diaspora-youth-ambassadors-inaugurate-executives/" class="btn btn-primary" target="_blank">Read More</a>
+                                <a href="#" class="text-decoration-none"><i class="fas fa-download me-1"></i> PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Publication 4 -->
+                <!-- <div class="col-lg-4 col-md-6 mb-4" data-category="newsletters">
+                    <div class="publication-card">
+                        <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Newsletter" class="publication-img">
+                        <div class="publication-content">
+                            <div class="publication-meta">
+                                <span class="publication-date">November 5, 2022</span>
+                                <span class="publication-tag">Newsletter</span>
+                            </div>
+                            <h3 class="publication-title">NDYA Newsletter: Fall 2022 Edition</h3>
+                            <p class="publication-excerpt">Updates on our programs, member spotlights, and upcoming events in the Nigerian diaspora community.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="#" class="btn btn-primary">Read More</a>
+                                <a href="#" class="text-decoration-none"><i class="fas fa-download me-1"></i> PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                
+                <!-- Publication 5 -->
+                <!-- <div class="col-lg-4 col-md-6 mb-4" data-category="research">
+                    <div class="publication-card">
+                        <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Research Publication" class="publication-img">
+                        <div class="publication-content">
+                            <div class="publication-meta">
+                                <span class="publication-date">September 20, 2022</span>
+                                <span class="publication-tag">Research</span>
+                            </div>
+                            <h3 class="publication-title">Economic Contributions of Nigerian Diaspora Youth</h3>
+                            <p class="publication-excerpt">An analysis of the economic impact and entrepreneurial activities of young Nigerians living abroad.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="#" class="btn btn-primary">Read More</a>
+                                <a href="#" class="text-decoration-none"><i class="fas fa-download me-1"></i> PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                
+                <!-- Publication 6 -->
+                <!-- <div class="col-lg-4 col-md-6 mb-4" data-category="resources">
+                    <div class="publication-card">
+                        <img src="https://images.unsplash.com/photo-1551836026-d5c55ac4d66f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Resource Guide" class="publication-img">
+                        <div class="publication-content">
+                            <div class="publication-meta">
+                                <span class="publication-date">August 15, 2022</span>
+                                <span class="publication-tag">Resource</span>
+                            </div>
+                            <h3 class="publication-title">Mental Health Resources for Diaspora Youth</h3>
+                            <p class="publication-excerpt">A guide to mental wellness and support services available for young Nigerians navigating life abroad.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="#" class="btn btn-primary">Read More</a>
+                                <a href="#" class="text-decoration-none"><i class="fas fa-download me-1"></i> PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            
+            <!-- Pagination -->
+            <nav aria-label="Publication pagination" class="mt-5">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Featured Publication -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">Featured Publication</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="image5.jpg" alt="Featured Publication" class="img-fluid rounded">
+                </div>
+                <div class="col-lg-6">
+                    <span class="publication-tag mb-3 d-inline-block">Research Report</span>
+                    <h3 class="mb-3">NDYA Raises Concern Over Bank Delays in ‘Form A’ Processing for Nigerians Abroad</h3>
+                    <p class="mb-4">NDYA reports growing concerns from Nigerians in the diaspora over significant delays in banks’ processing of ‘Form A’ transactions. These delays are affecting students, workers, and families who rely on timely foreign exchange approvals..</p>
+                    <div class="mb-4">
+                        <h5>Key Findings:</h5>
+                        <ul>
+                            <li>Prolonged bank delays are disrupting tuition payments</li>
+                            <li>Students and workers are facing financial strain due to untimely access to approved funds.</li>
+                            <li>Immediate improvement in processing efficiency is necessary to ensure timely financial support for the diaspora community.</li>
+                        </ul>
+                    </div>
+                    <a href="https://www.vanguardngr.com/2022/11/delays-by-banks-processing-form-a-transactions-frustrating-nigerians-in-diaspora-ndya/" class="btn btn-primary me-2" target="_blank">Read Full Report</a>
+                    <a href="#" class="btn btn-outline-primary">Download Executive Summary</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container text-center">
+            <h2 class="mb-4">Contribute to Our Publications</h2>
+            <p class="lead mb-4">Are you a researcher, writer, or expert with insights on Nigerian diaspora youth? We welcome contributions to our publications.</p>
+            <a href="contact.html" class="btn btn-light btn-lg">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+  <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4>NDYA</h4>
+                    <p>Dream, Believe and Achieve.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="about.html" class="text-white text-decoration-none">About</a></li>
+                        <li><a href="programs.html" class="text-white text-decoration-none">Programs</a></li>
+                        <li><a href="gallery.html" class="text-white text-decoration-none">Gallery</a></li>
+                        <li><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> Beautiful Plaza, Dawaki, Abuja FCT</p>
+                    <p><i class="fas fa-phone me-2"></i> +234 704 547 5193</p>
+                    <p><i class="fas fa-envelope me-2"></i> princedonvic1@gmail.com</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2023 Nigerian Diaspora Youth Ambassador. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Filter functionality for publications
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const publicationItems = document.querySelectorAll('#publications-grid > div');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    publicationItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - Nigerian Diaspora Youth Ambassador (NDYA)</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #008751; /* Nigerian Green */
+            --secondary-color: #FFFFFF; /* White */
+            --accent-color: #E6BE8A; /* Gold */
+            --text-color: #333333;
+            --light-bg: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+        }
+        
+        .navbar {
+            background-color: var(--primary-color) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand, .nav-link {
+            color: var(--secondary-color) !important;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
+        
+        .breadcrumb {
+            background-color: var(--light-bg);
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        
+        .page-header {
+            background: linear-gradient(rgba(0, 135, 81, 0.8), rgba(0, 135, 81, 0.9)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .section-title.text-center:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #006b40;
+            border-color: #006b40;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .bg-light-custom {
+            background-color: var(--light-bg);
+        }
+        
+        .team-member {
+            text-align: center;
+            margin-bottom: 40px;
+            transition: transform 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .team-member img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid var(--accent-color);
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        
+        .team-member:hover img {
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .team-member h4 {
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .team-member .position {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .team-member .bio {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .team-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .team-social a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .team-tabs {
+            margin-bottom: 40px;
+        }
+        
+        .team-tabs .nav-link {
+            color: var(--text-color);
+            border: none;
+            border-bottom: 3px solid transparent;
+            padding: 15px 20px;
+            font-weight: 500;
+        }
+        
+        .team-tabs .nav-link.active {
+            color: var(--primary-color);
+            background: transparent;
+            border-bottom: 3px solid var(--primary-color);
+        }
+        
+        .team-tabs .nav-link:hover {
+            color: var(--primary-color);
+            background: rgba(0, 135, 81, 0.05);
+        }
+        
+        .advisor-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: 100%;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .advisor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .advisor-card img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 3px solid var(--accent-color);
+        }
+        
+        .advisor-card h5 {
+            margin-bottom: 5px;
+        }
+        
+        .advisor-card .company {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .stats-card {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            height: 100%;
+        }
+        
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+        
+        .stats-label {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+        
+        .join-team-card {
+            background: linear-gradient(135deg, var(--primary-color), #006b40);
+            color: white;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .join-team-card h3 {
+            margin-bottom: 20px;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 40px 0 20px;
+        }
+        
+        .social-icons a {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.webp" alt="NDYA Logo" class="me-2" style="height: 40px;">
+                NDYA
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li> 
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="team.html">Team</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="publication.html">publication</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light ms-2" href="#donate">Donate</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Our Team</h1>
+            <p class="lead">Meet the passionate individuals driving NDYA's mission forward</p>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <section class="py-3">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Our Team</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Team Introduction -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="section-title">Dedicated to Youth Empowerment</h2>
+                    <p class="lead mb-5">Our team consists of passionate professionals, volunteers, and advisors committed to empowering Nigerian youth in the diaspora. Together, we work to create opportunities, foster leadership, and build a strong community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Tabs -->
+    <section class="py-5 bg-light-custom">
+        <div class="container">
+            <ul class="nav nav-pills team-tabs justify-content-center" id="teamTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="leadership-tab" data-bs-toggle="pill" data-bs-target="#leadership" type="button" role="tab">Leadership Team</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="volunteers-tab" data-bs-toggle="pill" data-bs-target="#volunteers" type="button" role="tab">Volunteers</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="advisors-tab" data-bs-toggle="pill" data-bs-target="#advisors" type="button" role="tab">Advisory Board</button>
+                </li>
+            </ul>
+            
+            <div class="tab-content" id="teamTabsContent">
+                <!-- Leadership Team Tab -->
+                <div class="tab-pane fade show active" id="leadership" role="tabpanel">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="team-member">
+                                <img src="homeicon.jpg" alt="Aisha Bello">
+                                <h4>Amb. David Victor Alozie</h4>
+                                <div class="position">Founder & Executive Director</div>
+                                <p class="bio">or Alozie NDYA in 2018 with a vision to empower Nigerian youth in the diaspora. With over  years of experience in youth development he leads our strategic direction and global expansion.</p>
+                                <div class="team-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="team-member">
+                                <img src="ameh.jpg" alt="Chinedu Okoro">
+                                <h4>Comr. Ameh Samson</h4>
+                                <div class="position">Deputy NDYA</div>
+                                <p class="bio">Comr. Ameh Samson oversees all NDYA programs and initiatives. With a background in education and community development, he ensures our programs effectively meet the needs of Nigerian diaspora youth and align with our mission.</p>
+                                <div class="team-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="team-member">
+                                <img src="image25.jpg" alt="Funke Adebayo">
+                                <h4>Bar. Lilian Ezebuihe</h4>
+                                <div class="position">Liaison Officer</div>
+                                <p class="bio">Bar. Lilian develops and maintains strategic partnerships with organizations, corporations, and institutions. Her extensive network and negotiation skills have been instrumental in expanding NDYA's reach and impact.</p>
+                                <div class="team-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="team-member">
+                                <img src="image17.jpg" alt="Emeka Nwosu">
+                                <h4>Comr. Jacob Apollos</h4>
+                                <div class="position">General Secretary</div>
+                                <p class="bio">Comr. Jacob ensures the smooth operation of NDYA's day-to-day activities. With expertise in project management and logistics, he coordinates our events, volunteers, and administrative functions across all chapters.</p>
+                                <div class="team-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="team-member">
+                                <img src="image23.jpg" alt="Zainab Yusuf">
+                                <h4>Bar. Onyinye Dike</h4>
+                                <div class="position">legal Adviser</div>
+                                <p class="bio">Bar. Onyiye provides legal guidance to the organization, reviews official documents, ensures NDYA’s activities comply with relevant laws, and advises the leadership on legal risks and best practices.</p>
+                                <div class="team-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="team-member">
+                                <img src="image24.jpg" alt="David Okafor">
+                                <h4>Bar. Eze Chidubem Esq</h4>
+                                <div class="position">Legal Adviser II</div>
+                                <p class="bio">Bar. Eze supports the organization by conducting legal research, preparing documentation, and offering clear counsel on policy and governance matters. he helps interpret regulations, ensures proper legal procedures are followed, and assists the team in making informed, compliant decisions.</p>
+                                <div class="team-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Volunteers Tab -->
+                <!-- <div class="tab-pane fade" id="volunteers" role="tabpanel">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="team-member">
+                                <img src="https://randomuser.me/api/portraits/women/26.jpg" alt="Bimpe Adekunle">
+                                <h4>Bimpe Adekunle</h4>
+                                <div class="position">Mentorship Coordinator</div>
+                                <p class="bio">Bimpe coordinates our mentorship program, matching mentors and mentees while providing ongoing support. Her dedication has helped hundreds of young Nigerians find guidance and direction.</p>
+                                <div class="team-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="team-member">
+                                <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="Tunde Lawal">
+                                <h4>Tunde Lawal</h4>
+                                <div class="position">Event Coordinator</div>
+                                <p class="bio">Tunde organizes NDYA's events and workshops, ensuring each gathering is impactful and memorable. His attention to detail and creativity make our events successful and engaging.</p>
+                                <div class="team-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="team-member">
+                                <img src="https://randomuser.me/api/portraits/women/52.jpg" alt="Grace Chukwu">
+                                <h4>Grace Chukwu</h4>
+                                <div class="position">Chapter Lead - UK</div>
+                                <div class="bio">Grace leads our UK chapter, organizing local events and supporting Nigerian youth across the United Kingdom. Her leadership has grown our UK presence significantly.</div>
+                                <div class="team-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="team-member">
+                                <img src="https://randomuser.me/api/portraits/men/58.jpg" alt="Kunle Adebayo">
+                                <h4>Kunle Adebayo</h4>
+                                <div class="position">Chapter Lead - USA</div>
+                                <p class="bio">Kunle oversees NDYA's operations in the United States, coordinating activities across multiple states. His efforts have expanded our reach to Nigerian youth in various American cities.</p>
+                                <div class="team-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="team-member">
+                                <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Ngozi Eze">
+                                <h4>Ngozi Eze</h4>
+                                <div class="position">Social Media Manager</div>
+                                <p class="bio">Ngozi manages NDYA's social media presence, creating engaging content that connects with our audience and spreads our message across digital platforms.</p>
+                                <div class="team-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="team-member">
+                                <img src="https://randomuser.me/api/portraits/men/29.jpg" alt="Femi Balogun">
+                                <h4>Femi Balogun</h4>
+                                <div class="position">Workshop Facilitator</div>
+                                <p class="bio">Femi designs and delivers workshops on leadership, career development, and cultural awareness. His engaging teaching style makes complex topics accessible and practical.</p>
+                                <div class="team-social">
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                
+                <!-- Advisory Board Tab -->
+                <!-- <div class="tab-pane fade" id="advisors" role="tabpanel">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="advisor-card">
+                                <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Dr. Adebayo Williams">
+                                <h5>Dr. Adebayo Williams</h5>
+                                <div class="company">Professor of African Studies, University of London</div>
+                                <p>Dr. Williams provides guidance on cultural programming and educational initiatives, drawing from his extensive research on diaspora communities.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="advisor-card">
+                                <img src="https://randomuser.me/api/portraits/women/79.jpg" alt="Mrs. Nkechi Okoro">
+                                <h5>Mrs. Nkechi Okoro</h5>
+                                <div class="company">CEO, Global Impact Consulting</div>
+                                <p>With decades of experience in international development, Mrs. Okoro advises on strategic planning and organizational growth.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="advisor-card">
+                                <img src="https://randomuser.me/api/portraits/men/82.jpg" alt="Mr. Tunde Ojo">
+                                <h5>Mr. Tunde Ojo</h5>
+                                <div class="company">Partner, Ojo & Associates Law Firm</div>
+                                <p>Mr. Ojo provides legal counsel and guidance on compliance matters, ensuring NDYA operates within regulatory frameworks.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="advisor-card">
+                                <img src="https://randomuser.me/api/portraits/women/85.jpg" alt="Dr. Fatima Bello">
+                                <h5>Dr. Fatima Bello</h5>
+                                <div class="company">Director, Youth Development Initiative</div>
+                                <p>Dr. Bello brings expertise in youth psychology and development, helping shape programs that effectively support young people.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="advisor-card">
+                                <img src="https://randomuser.me/api/portraits/men/88.jpg" alt="Mr. Chukwuma Eze">
+                                <h5>Mr. Chukwuma Eze</h5>
+                                <div class="company">Tech Entrepreneur & Investor</div>
+                                <p>Mr. Eze provides insights on technology integration and digital strategy, helping NDYA leverage technology for greater impact.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="advisor-card">
+                                <img src="https://randomuser.me/api/portraits/women/91.jpg" alt="Mrs. Amina Mohammed">
+                                <h5>Mrs. Amina Mohammed</h5>
+                                <div class="company">Former Diplomat & Community Leader</div>
+                                <p>With her diplomatic background, Mrs. Mohammed advises on cross-cultural communication and international relations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Stats -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">Our Team in Numbers</h2>
+            <div class="row">
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stats-card">
+                        <span class="stats-number">25</span>
+                        <span class="stats-label">Core Team Members</span>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stats-card">
+                        <span class="stats-number">150+</span>
+                        <span class="stats-label">Active Volunteers</span>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stats-card">
+                        <span class="stats-number">12</span>
+                        <span class="stats-label">Advisory Board Members</span>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stats-card">
+                        <span class="stats-number">15</span>
+                        <span class="stats-label">Countries Represented</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Our Team -->
+    <section class="py-5 bg-light-custom">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="join-team-card">
+                        <h3>Join Our Team</h3>
+                        <p class="mb-4">Are you passionate about empowering Nigerian youth in the diaspora? We're always looking for dedicated individuals to join our team as volunteers, mentors, or chapter leaders.</p>
+                        <a href="contact.html" class="btn btn-light btn-lg me-3">Volunteer With Us</a>
+                        <a href="#" class="btn btn-outline-light btn-lg">View Open Positions</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-4 mt-lg-0">
+                    <div class="stats-card">
+                        <h4>Why Join NDYA?</h4>
+                        <ul class="list-unstyled mt-3">
+                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Make a meaningful impact</li>
+                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Develop leadership skills</li>
+                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Join a supportive community</li>
+                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Gain valuable experience</li>
+                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Network with professionals</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+   <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4>NDYA</h4>
+                    <p>Dream, Believe and Achieve.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="about.html" class="text-white text-decoration-none">About</a></li>
+                        <li><a href="programs.html" class="text-white text-decoration-none">Programs</a></li>
+                        <li><a href="gallery.html" class="text-white text-decoration-none">Gallery</a></li>
+                        <li><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> Beautiful Plaza, Dawaki, Abuja FCT</p>
+                    <p><i class="fas fa-phone me-2"></i> +234 704 547 5193</p>
+                    <p><i class="fas fa-envelope me-2"></i> princedonvic1@gmail.com</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2023 Nigerian Diaspora Youth Ambassador. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

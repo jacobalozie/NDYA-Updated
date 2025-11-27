@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Nigerian Diaspora Youth Ambassador (NDYA)</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #008751; /* Nigerian Green */
+            --secondary-color: #FFFFFF; /* White */
+            --accent-color: #E6BE8A; /* Gold */
+            --text-color: #333333;
+            --light-bg: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+        }
+        
+        .navbar {
+            background-color: var(--primary-color) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand, .nav-link {
+            color: var(--secondary-color) !important;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
+        
+        .breadcrumb {
+            background-color: var(--light-bg);
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        
+        .page-header {
+            background: linear-gradient(rgba(0, 135, 81, 0.8), rgba(0, 135, 81, 0.9)), url('https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .section-title.text-center:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #006b40;
+            border-color: #006b40;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .bg-light-custom {
+            background-color: var(--light-bg);
+        }
+        
+        .gallery-filter {
+            margin-bottom: 30px;
+        }
+        
+        .gallery-filter .btn {
+            margin: 0 5px 10px;
+            border-radius: 30px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .gallery-item img {
+            transition: transform 0.5s;
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 135, 81, 0.8);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-overlay h5 {
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .gallery-overlay p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        
+        .modal-content {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .modal-header {
+            background-color: var(--primary-color);
+            color: white;
+            border-bottom: none;
+        }
+        
+        .modal-footer {
+            border-top: none;
+            background-color: var(--light-bg);
+        }
+        
+        .video-gallery {
+            margin-top: 50px;
+        }
+        
+        .video-item {
+            margin-bottom: 30px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .video-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .video-thumbnail img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .video-thumbnail:hover img {
+            transform: scale(1.05);
+        }
+        
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 135, 81, 0.8);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: background 0.3s;
+        }
+        
+        .video-thumbnail:hover .video-play-btn {
+            background: rgba(0, 135, 81, 1);
+        }
+        
+        .video-info {
+            padding: 15px;
+            background: white;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 40px 0 20px;
+        }
+        
+        .social-icons a {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Animation for modal */
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .modal.fade .modal-dialog {
+            animation: zoomIn 0.3s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.webp" alt="NDYA Logo" class="me-2" style="height: 40px;">
+                NDYA
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                  
+                    <li class="nav-item">
+                        <a class="nav-link active" href="gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="team.html">Team</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="publication.html">publication</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light ms-2" href="#donate">Donate</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Our Gallery</h1>
+            <p class="lead">Capturing moments from our events, programs, and community activities</p>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <section class="py-3">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Gallery</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Gallery Filters -->
+    <section class="py-4 bg-light-custom">
+        <div class="container">
+            <div class="gallery-filter text-center">
+                <h3 class="mb-4">Filter by Category</h3>
+                <button class="btn btn-primary active" data-filter="all">All</button>
+                <button class="btn btn-outline-primary" data-filter="events">Events</button>
+                <button class="btn btn-outline-primary" data-filter="programs">Programs</button>
+                <button class="btn btn-outline-primary" data-filter="community">Community</button>
+                <button class="btn btn-outline-primary" data-filter="leadership">Leadership</button>
+                <button class="btn btn-outline-primary" data-filter="cultural">Cultural</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title">Photo Gallery</h2>
+            <div class="row" id="gallery-container">
+                <!-- Event 1 -->
+                <div class="col-md-6 col-lg-4 gallery-item" data-category="events">
+                    <img src="excos.jpg" alt="Youth Leadership Summit">
+                    <div class="gallery-overlay">
+                        <h5>Youth Leadership Summit 2023</h5>
+                        <p>Annual gathering of young Nigerian leaders for networking and development</p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="excos.jpg" data-title="Youth Leadership Summit 2023" data-description="Annual gathering of young Nigerian leaders for networking and development">View Larger</button>
+                    </div>
+                </div>
+                
+                <!-- Event 2 -->
+                <div class="col-md-6 col-lg-4 gallery-item" data-category="programs">
+                    <img src="image2.jpg"Mentorship Program">
+                    <div class="gallery-overlay">
+                        <h5>Mentorship Program Session</h5>
+                        <p>One-on-one guidance between experienced professionals and youth</p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="image2.jpg" data-title="Mentorship Program Session" data-description="One-on-one guidance between experienced professionals and youth">View Larger</button>
+                    </div>
+                </div>
+                
+                <!-- Event 3 -->
+                <div class="col-md-6 col-lg-4 gallery-item" data-category="cultural">
+                    <img src="image6.jpg" alt="Cultural Festival">
+                    <div class="gallery-overlay">
+                        <h5>Nigerian Cultural Festival</h5>
+                        <p>Celebrating Nigerian heritage through music, dance, and traditional attire</p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="image6.jpg" data-title="Nigerian Cultural Festival" data-description="Celebrating Nigerian heritage through music, dance, and traditional attire">View Larger</button>
+                    </div>
+                </div>
+                
+                <!-- Event 4 -->
+                <div class="col-md-6 col-lg-4 gallery-item" data-category="community">
+                    <img src="imag13.jpg" alt="Community Service">
+                    <div class="gallery-overlay">
+                        <h5>Community Service Day</h5>
+                        <p>NDYA members volunteering at local community centers</p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="image13.jpg" data-title="Community Service Day" data-description="NDYA members volunteering at local community centers">View Larger</button>
+                    </div>
+                </div>
+                
+                <!-- Event 5 -->
+                <div class="col-md-6 col-lg-4 gallery-item" data-category="leadership">
+                    <img src="homeicon.jpg" alt="Leadership Workshop">
+                    <div class="gallery-overlay">
+                        <h5>Leadership Workshop</h5>
+                        <p>Interactive session on developing leadership skills for young Nigerians</p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="homeicon.jpg" data-title="Leadership Workshop" data-description="Interactive session on developing leadership skills for young Nigerians">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item" data-category="community">
+                    <img src="image17.jpg" alt="Leadership Workshop">
+                    <div class="gallery-overlay">
+                        <h5>Leadership Workshop</h5>
+                        <p>Interactive session on developing leadership skills for young Nigerians</p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="image17.jpg" data-title="Leadership Workshop" data-description="Interactive session on developing leadership skills for young Nigerians">View Larger</button>
+                    </div>
+                </div>
+                
+                <!-- Event 6 -->
+                <div class="col-md-6 col-lg-4 gallery-item" data-category="programs">
+                    <img src="image19.jpg" alt="Career Fair">
+                    <div class="gallery-overlay">
+                        <h5>Annual Career Fair</h5>
+                        <p>Connecting Nigerian youth with employers and career opportunities</p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="image17.jpg" data-title="Annual Career Fair" data-description="Connecting Nigerian youth with employers and career opportunities">View Larger</button>
+                    </div>
+                </div>
+                
+                <!-- Event 7 -->
+                <div class="col-md-6 col-lg-4 gallery-item" data-category="events">
+                    <img src="image19.jpg" alt="Award Ceremony">
+                    <div class="gallery-overlay">
+                        <h5>Excellence Awards</h5>
+                        <p>Recognizing outstanding achievements of Nigerian diaspora youth</p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="image19.jpg" data-title="Excellence Awards" data-description="Recognizing outstanding achievements of Nigerian diaspora youth">View Larger</button>
+                    </div>
+                </div>
+                
+                <!-- Event 8 -->
+                <div class="col-md-6 col-lg-4 gallery-item" data-category="cultural">
+                    <img src="image23.jpg" alt="Traditional Attire">
+                    <div class="gallery-overlay">
+                        <h5>Cultural Day Celebration</h5>
+                        <p>Showcasing the diversity of Nigerian traditional attire and customs</p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="image23.jpg" data-title="Cultural Day Celebration" data-description="Showcasing the diversity of Nigerian traditional attire and customs">View Larger</button>
+                    </div>
+                </div>
+                
+                <!-- Event 9 -->
+                <div class="col-md-6 col-lg-4 gallery-item" data-category="community">
+                    <img src="image24.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5>Networking Mixer</h5>
+                        <p>Building connections between Nigerian professionals and youth</p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="image24.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn btn-primary btn-lg" id="load-more">Load More Photos</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Gallery -->
+    <section class="py-5 bg-light-custom video-gallery">
+        <div class="container">
+            <h2 class="section-title text-center">Video Gallery</h2>
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="video-item">
+                        <div class="video-thumbnail">
+                            <img src="image3.jpg">
+                            <div class="video-play-btn" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h5>Leadership Summit 2023 Highlights</h5>
+                            <p class="text-muted">Watch the highlights from our annual Youth Leadership Summit</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="video-item">
+                        <div class="video-thumbnail">
+                            <img src="image11.jpg" alt="Cultural Festival">
+                            <div class="video-play-btn" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h5>Nigerian Cultural Festival</h5>
+                            <p class="text-muted">Experience the vibrant celebration of Nigerian culture</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="video-item">
+                        <div class="video-thumbnail">
+                            <img src="image4.jpg" alt="Mentorship Stories">
+                            <div class="video-play-btn" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h5>Mentorship Success Stories</h5>
+                            <p class="text-muted">Hear from our mentors and mentees about their experiences</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container text-center">
+            <h2 class="mb-4">Share Your NDYA Moments</h2>
+            <p class="lead mb-4">Have photos or videos from our events? Share them with us to be featured in our gallery!</p>
+            <a href="contact.html" class="btn btn-light btn-lg me-3">Submit Media</a>
+            <a href="#" class="btn btn-outline-light btn-lg">Follow on Instagram</a>
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel">Image Title</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center p-0">
+                    <img src="" alt="" id="modal-image" class="img-fluid">
+                </div>
+                <div class="modal-footer">
+                    <p id="modal-description" class="mb-0">Image description goes here</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="videoModalLabel">Video</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="ratio ratio-16x9">
+                        <iframe id="video-frame" src="" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4>NDYA</h4>
+                    <p>Empowering Nigerian youth in the diaspora to become leaders and change-makers.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="about.html" class="text-white text-decoration-none">About</a></li>
+                        <li><a href="programs.html" class="text-white text-decoration-none">Programs</a></li>
+                        <li><a href="gallery.html" class="text-white text-decoration-none">Gallery</a></li>
+                        <li><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> 123 Nigerian Way, Lagos, Nigeria</p>
+                    <p><i class="fas fa-phone me-2"></i> +234 123 456 7890</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@ndya.org</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2023 Nigerian Diaspora Youth Ambassador. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Gallery Filter Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.gallery-filter .btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    galleryItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Image Modal Functionality
+            const imageModal = document.getElementById('imageModal');
+            imageModal.addEventListener('show.bs.modal', function(event) {
+                const button = event.relatedTarget;
+                const imageSrc = button.getAttribute('data-image');
+                const imageTitle = button.getAttribute('data-title');
+                const imageDescription = button.getAttribute('data-description');
+                
+                const modalTitle = imageModal.querySelector('.modal-title');
+                const modalImage = imageModal.querySelector('#modal-image');
+                const modalDescription = imageModal.querySelector('#modal-description');
+                
+                modalTitle.textContent = imageTitle;
+                modalImage.src = imageSrc;
+                modalImage.alt = imageTitle;
+                modalDescription.textContent = imageDescription;
+            });
+            
+            // Video Modal Functionality
+            const videoModal = document.getElementById('videoModal');
+            videoModal.addEventListener('show.bs.modal', function(event) {
+                const button = event.relatedTarget;
+                const videoSrc = button.getAttribute('data-video');
+                
+                const videoFrame = videoModal.querySelector('#video-frame');
+                videoFrame.src = videoSrc;
+            });
+            
+            // Reset video when modal is closed
+            videoModal.addEventListener('hidden.bs.modal', function() {
+                const videoFrame = videoModal.querySelector('#video-frame');
+                videoFrame.src = '';
+            });
+            
+            // Load More Photos Functionality
+            const loadMoreBtn = document.getElementById('load-more');
+            loadMoreBtn.addEventListener('click', function() {
+                // In a real implementation, this would load more images from a server
+                // For this example, we'll just show an alert
+                alert('More photos would be loaded from the server in a real implementation.');
+            });
+        });
+    </script>
+</body>
+</html>

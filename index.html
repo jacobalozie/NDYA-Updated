@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Nigerian Diaspora Youth Ambassador (NDYA)</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #008751; /* Nigerian Green */
+            --secondary-color: #FFFFFF; /* White */
+            --accent-color: #E6BE8A; /* Gold */
+            --text-color: #333333;
+            --light-bg: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+        }
+        
+        .navbar {
+            background-color: var(--primary-color) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand, .nav-link {
+            color: var(--secondary-color) !important;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 135, 81, 0.8), rgba(0, 135, 81, 0.9)), url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #006b40;
+            border-color: #006b40;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .bg-light-custom {
+            background-color: var(--light-bg);
+        }
+        
+        .program-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 40px 0 20px;
+        }
+        
+        .social-icons a {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+        
+        .stats-counter {
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        .counter {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .counter-label {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.webp" alt="NDYA Logo" class="me-2" style="height: 40px;">
+                NDYA
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a class="nav-link" href="gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="team.html">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="publication.html">publication</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light ms-2" href="#donate">Donate</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4">Nigerian Diaspora Youth Ambassador</h1>
+            <p class="lead mb-4">Amplifying the voices and shaping the future of Nigerian youths in the diaspora.</p>
+            <a href="about.html" class="btn btn-light btn-lg me-2">Learn More</a>
+            <a href="contact.html" class="btn btn-outline-light btn-lg">Get Involved</a>
+        </div>
+    </section>
+
+    <!-- About Preview Section -->
+    <section id="about-preview" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">About NDYA</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h3 class="mb-4">Our Story</h3>
+                    <p class="mb-4">Amb. David Victor Alozie serves as the President of NDYA.  Under his leadership, NDYA has advocated for the welfare of Nigerians abroad, defended student rights, and called for support from national institutions to address diaspora concerns.</p>
+                    <p class="mb-4">He is passionate about youth empowerment and creating platforms for Nigerians in the diaspora to connect, share experiences, and influence positive change both at home and abroad. Through his guidance, NDYA continues to strengthen its role as a bridge between diaspora youths and national development initiatives.</p>
+                    <a href="about.html" class="btn btn-primary">Read Our Full Story</a>
+                </div>
+                <div class="col-lg-6">
+                    <img src="homeicon.jpg" alt="Nigerian youth" class="img-fluid rounded shadow" >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <!-- NDYA Impact Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5">Our Impact</h2>
+    <div class="row text-center">
+      
+      <div class="col-6 col-md-3 mb-4">
+        <div class="p-3 bg-white rounded shadow-sm">
+          <h2 class="display-5">5000</h2>
+          <p class="mb-0">Youth Impacted</p>
+        </div>
+      </div>
+      
+      <div class="col-6 col-md-3 mb-4">
+        <div class="p-3 bg-white rounded shadow-sm">
+          <h2 class="display-5">15</h2>
+          <p class="mb-0">Countries</p>
+        </div>
+      </div>
+      
+      <div class="col-6 col-md-3 mb-4">
+        <div class="p-3 bg-white rounded shadow-sm">
+          <h2 class="display-5">200</h2>
+          <p class="mb-0">Volunteers</p>
+        </div>
+      </div>
+      
+      <div class="col-6 col-md-3 mb-4">
+        <div class="p-3 bg-white rounded shadow-sm">
+          <h2 class="display-5">50</h2>
+          <p class="mb-0">Programs</p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+    <!-- Programs Preview Section -->
+    <section id="programs-preview" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">Our Programs</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-4">
+                        <div class="program-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h4>Education & Student Support</h4>
+                        <p>NDYA provides guidance, resources, and advocacy to support Nigerian students abroad. We help them navigate challenges and access opportunities.</p>
+                        <a href="about.html" class="btn btn-outline-primary mt-auto">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-4">
+                        <div class="program-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h4>Diaspora Welfare & Rights</h4>
+                        <p>We protect the rights of Nigerians overseas and raise awareness about issues affecting them. Our advocacy ensures fair treatment and support from institutions</p>
+                        <a href="about.html" class="btn btn-outline-primary mt-auto">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-4">
+                        <div class="program-icon">
+                            <i class="fas fa-globe-africa"></i>
+                        </div>
+                        <h4>Youth Engagement & Empowerment</h4>
+                        <p>NDYA creates platforms for youths to connect, share ideas, and develop leadership skills. We encourage active participation in global and national initiatives.</p>
+                        <a href="about.html" class="btn btn-outline-primary mt-auto">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="about.html" class="btn btn-primary">View All Programs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container text-center">
+            <h2 class="mb-4">Ready to Make a Difference?</h2>
+            <p class="lead mb-4">Join our community of change-makers and help empower the next generation of Nigerian leaders.</p>
+            <a href="contact.html" class="btn btn-light btn-lg me-3">Get Involved</a>
+            <a href="#" class="btn btn-outline-light btn-lg">Donate Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4>NDYA</h4>
+                    <p>Dream, Believe and Achieve.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="about.html" class="text-white text-decoration-none">About</a></li>
+                        <li><a href="publication.html" class="text-white text-decoration-none">Programs</a></li>
+                        <li><a href="gallery.html" class="text-white text-decoration-none">Gallery</a></li>
+                        <li><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> Beautiful Plaza, Dawaki, Abuja FCT</p>
+                    <p><i class="fas fa-phone me-2"></i> +234 704 547 5193</p>
+                    <p><i class="fas fa-envelope me-2"></i> princedonvic1@gmail.com</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2023 Nigerian Diaspora Youth Ambassador. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Counter animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const counters = document.querySelectorAll('.counter');
+            const speed = 200;
+            
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-count');
+                    const count = +counter.innerText;
+                    
+                    const inc = target / speed;
+                    
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 1);
+                    } else {
+                        counter.innerText = target;
+                    }
+                }
+                
+                updateCount();
+            });
+        });
+    </script>
+</body>
+</html>
