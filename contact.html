@@ -12,11 +12,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #008751; /* Nigerian Green */
+            --primary-color: #1a4b8c; /* Deep Blue */
             --secondary-color: #FFFFFF; /* White */
-            --accent-color: #E6BE8A; /* Gold */
+            --accent-color: #f8c471; /* Golden Yellow */
+            --light-blue: #4a8cd6;
+            --dark-blue: #0d3a6c;
             --text-color: #333333;
-            --light-bg: #f8f9fa;
+            --light-bg: #f0f5ff;
         }
         
         body {
@@ -26,36 +28,93 @@
         
         .navbar {
             background-color: var(--primary-color) !important;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
         
         .navbar-brand, .nav-link {
             color: var(--secondary-color) !important;
+            font-weight: 500;
+        }
+        
+        .nav-link {
+            position: relative;
+            margin: 0 5px;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after,
+        .nav-link.active:after {
+            width: 100%;
         }
         
         .nav-link:hover {
             color: var(--accent-color) !important;
         }
         
-        .breadcrumb {
-            background-color: var(--light-bg);
-            padding: 10px 15px;
-            border-radius: 5px;
-        }
-        
         .page-header {
-            background: linear-gradient(rgba(0, 135, 81, 0.8), rgba(0, 135, 81, 0.9)), url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(135deg, rgba(26, 75, 140, 0.85) 0%, rgba(13, 58, 108, 0.85) 100%), url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             color: white;
-            padding: 80px 0;
+            padding: 120px 0 80px;
             text-align: center;
+            position: relative;
+        }
+        
+        .page-header:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, var(--light-bg), transparent);
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .breadcrumb {
+            background-color: var(--light-bg);
+            padding: 12px 15px;
+            border-radius: 8px;
         }
         
         .section-title {
             position: relative;
             margin-bottom: 40px;
             padding-bottom: 15px;
+            font-weight: 700;
         }
         
         .section-title:after {
@@ -64,8 +123,9 @@
             bottom: 0;
             left: 0;
             width: 80px;
-            height: 3px;
+            height: 4px;
             background-color: var(--primary-color);
+            border-radius: 2px;
         }
         
         .section-title.text-center:after {
@@ -76,21 +136,33 @@
         .btn-primary {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
+            border-radius: 50px;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
         
         .btn-primary:hover {
-            background-color: #006b40;
-            border-color: #006b40;
+            background-color: var(--dark-blue);
+            border-color: var(--dark-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
         
         .btn-outline-primary {
             color: var(--primary-color);
             border-color: var(--primary-color);
+            border-radius: 50px;
+            padding: 10px 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
         
         .btn-outline-primary:hover {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .bg-light-custom {
@@ -99,43 +171,59 @@
         
         .contact-info-card {
             background: white;
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
             height: 100%;
-            transition: transform 0.3s;
+            transition: transform 0.4s, box-shadow 0.4s;
             text-align: center;
         }
         
         .contact-info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
         
         .contact-icon {
             font-size: 2.5rem;
             color: var(--primary-color);
             margin-bottom: 20px;
+            display: inline-block;
+            padding: 15px;
+            border-radius: 50%;
+            background-color: rgba(26, 75, 140, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-info-card:hover .contact-icon {
+            background-color: var(--primary-color);
+            color: white;
+            transform: scale(1.1);
         }
         
         .contact-form {
             background: white;
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form:hover {
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
         }
         
         .form-control {
             border: 1px solid #e0e0e0;
             padding: 12px 15px;
-            border-radius: 5px;
+            border-radius: 8px;
             margin-bottom: 20px;
             transition: all 0.3s;
         }
         
         .form-control:focus {
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.2rem rgba(0, 135, 81, 0.25);
+            box-shadow: 0 0 0 0.2rem rgba(26, 75, 140, 0.25);
         }
         
         .form-label {
@@ -145,16 +233,16 @@
         
         .chapter-card {
             background: white;
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 25px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
             height: 100%;
-            transition: transform 0.3s;
+            transition: transform 0.4s, box-shadow 0.4s;
         }
         
         .chapter-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
         
         .chapter-flag {
@@ -167,8 +255,9 @@
         
         .faq-item {
             margin-bottom: 15px;
-            border-radius: 5px;
+            border-radius: 8px;
             overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         
         .faq-question {
@@ -183,7 +272,7 @@
         }
         
         .faq-question:hover {
-            background: #e9ecef;
+            background: #e2eaff;
         }
         
         .faq-answer {
@@ -212,36 +301,184 @@
         }
         
         .map-container {
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .map-container:hover {
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-blue) 100%);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,192C672,181,768,139,864,138.7C960,139,1056,181,1152,181.3C1248,181,1344,139,1392,117.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .btn-light {
+            background-color: white;
+            color: var(--primary-color);
+            border-radius: 50px;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-light:hover {
+            background-color: var(--light-bg);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
         
         footer {
-            background-color: var(--primary-color);
+            background-color: var(--dark-blue);
             color: var(--secondary-color);
-            padding: 40px 0 20px;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        .footer-tagline {
+            font-style: italic;
+            margin-bottom: 20px;
+            opacity: 0.9;
         }
         
         .social-icons a {
             color: var(--secondary-color);
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin-right: 15px;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
+            display: inline-block;
         }
         
         .social-icons a:hover {
             color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-heading {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-heading:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--accent-color);
+            margin-top: 4px;
+        }
+        
+        .copyright {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 40px;
+            text-align: center;
+            opacity: 0.7;
+        }
+        
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Blue-themed elements */
+        .blue-accent {
+            color: var(--primary-color);
+        }
+        
+        .blue-divider {
+            height: 4px;
+            width: 60px;
+            background: linear-gradient(to right, var(--primary-color), var(--light-blue));
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .page-subtitle {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
                 <img src="logo.webp" alt="NDYA Logo" class="me-2" style="height: 40px;">
-                NDYA
+                <span style="font-weight: 700;">NDYA</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -262,13 +499,13 @@
                         <a class="nav-link" href="team.html">Team</a>
                     </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="publication.html">publication</a>
+                        <a class="nav-link" href="publication.html">Publications</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="contact.html">Contact</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="btn btn-outline-light ms-2" href="#donate">Donate</a>
+                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                        <a class="btn btn-outline-light" href="#donate">Donate</a>
                     </li>
                 </ul>
             </div>
@@ -278,8 +515,8 @@
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h1 class="display-4 fw-bold">Contact Us</h1>
-            <p class="lead">Get in touch with NDYA - We'd love to hear from you</p>
+            <h1 class="page-title">Contact Us</h1>
+            <p class="page-subtitle">Get in touch with NDYA - We'd love to hear from you</p>
         </div>
     </section>
 
@@ -298,33 +535,34 @@
     <!-- Contact Information -->
     <section class="py-5">
         <div class="container">
-            <h2 class="section-title text-center">Get In Touch</h2>
+            <h2 class="section-title text-center fade-in">Get In Touch</h2>
+            <div class="blue-divider"></div>
             <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="col-lg-4 col-md-6 mb-4 fade-in">
                     <div class="contact-info-card">
                         <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <h4>Our Headquarters</h4>
-                        <p>Beautiful plaa<br>Dawaki<br>Abuja, Nigeria</p>
+                        <h4 class="blue-accent">Our Headquarters</h4>
+                        <p>Beautiful Plaza<br>Dawaki<br>Abuja, Nigeria</p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="col-lg-4 col-md-6 mb-4 fade-in">
                     <div class="contact-info-card">
                         <div class="contact-icon">
                             <i class="fas fa-phone"></i>
                         </div>
-                        <h4>Phone Number</h4>
+                        <h4 class="blue-accent">Phone Number</h4>
                         <p>+234 704 547 5193<br>+234 904 286 9357</p>
                         <small class="text-muted">Mon-Fri, 9am-5pm WAT</small>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="col-lg-4 col-md-6 mb-4 fade-in">
                     <div class="contact-info-card">
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
-                        <h4>Email Address</h4>
+                        <h4 class="blue-accent">Email Address</h4>
                         <p>princedonvic1@gmail.com</p>
                         <small class="text-muted">We respond within 24 hours</small>
                     </div>
@@ -338,8 +576,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mb-5 mb-lg-0">
-                    <div class="contact-form">
-                        <h3 class="mb-4">Send Us a Message</h3>
+                    <div class="contact-form fade-in">
+                        <h3 class="mb-4 blue-accent">Send Us a Message</h3>
                         <form id="contactForm">
                             <div class="row">
                                 <div class="col-md-6">
@@ -388,126 +626,37 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <h3 class="mb-4">Our Location</h3>
+                <div class="col-lg-4 fade-in">
+                    <h3 class="mb-4 blue-accent">Our Location</h3>
                     <div class="map-container mb-4">
                         <!-- Embedded Google Map -->
                         <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.2236854796633!2d7.394539000000007!3d9.134258800000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104ddfdfa9b24edf%3A0x5876a1b2224d6093!2sBeautiful%20Plaza%2C%20Dawaki%2C%20Abuja!5e0!3m2!1sen!2sng!4v1764181878297!5m2!1sen!2sng" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>" 
-                         
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.2236854796633!2d7.394539000000007!3d9.134258800000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104ddfdfa9b24edf%3A0x5876a1b2224d6093!2sBeautiful%20Plaza%2C%20Dawaki%2C%20Abuja!5e0!3m2!1sen!2sng!4v1764181878297!5m2!1sen!2sng" 
+                            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
                     </div>
-                    <!-- <div class="contact-info-card">
-                        <h4>Office Hours</h4>
+                    <div class="contact-info-card">
+                        <h4 class="blue-accent">Office Hours</h4>
                         <ul class="list-unstyled">
                             <li class="mb-2"><strong>Monday - Friday:</strong> 9:00 AM - 5:00 PM</li>
                             <li class="mb-2"><strong>Saturday:</strong> 10:00 AM - 2:00 PM</li>
                             <li class="mb-2"><strong>Sunday:</strong> Closed</li>
                         </ul>
                         <p class="mt-3"><small class="text-muted">All times are in West Africa Time (WAT)</small></p>
-                    </div> -->
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Global Chapters -->
-    <!-- <section class="py-5">
-        <div class="container">
-            <h2 class="section-title text-center">Our Global Chapters</h2>
-            <div class="row">
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="chapter-card">
-                        <div class="d-flex align-items-center mb-3">
-                            <img src="https://flagcdn.com/w80/gb.png" class="chapter-flag" alt="UK Flag">
-                            <h5 class="mb-0">United Kingdom</h5>
-                        </div>
-                        <p><strong>Address:</strong> 45 Nigerian House, London, UK</p>
-                        <p><strong>Email:</strong> uk@ndya.org</p>
-                        <p><strong>Phone:</strong> +44 20 1234 5678</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Contact UK Chapter</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="chapter-card">
-                        <div class="d-flex align-items-center mb-3">
-                            <img src="https://flagcdn.com/w80/us.png" class="chapter-flag" alt="USA Flag">
-                            <h5 class="mb-0">United States</h5>
-                        </div>
-                        <p><strong>Address:</strong> 123 African Plaza, New York, USA</p>
-                        <p><strong>Email:</strong> usa@ndya.org</p>
-                        <p><strong>Phone:</strong> +1 212 555 7890</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Contact US Chapter</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="chapter-card">
-                        <div class="d-flex align-items-center mb-3">
-                            <img src="https://flagcdn.com/w80/ca.png" class="chapter-flag" alt="Canada Flag">
-                            <h5 class="mb-0">Canada</h5>
-                        </div>
-                        <p><strong>Address:</strong> 78 Nigerian Way, Toronto, Canada</p>
-                        <p><strong>Email:</strong> canada@ndya.org</p>
-                        <p><strong>Phone:</strong> +1 416 123 4567</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Contact Canada Chapter</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="chapter-card">
-                        <div class="d-flex align-items-center mb-3">
-                            <img src="https://flagcdn.com/w80/au.png" class="chapter-flag" alt="Australia Flag">
-                            <h5 class="mb-0">Australia</h5>
-                        </div>
-                        <p><strong>Address:</strong> 15 African Street, Sydney, Australia</p>
-                        <p><strong>Email:</strong> australia@ndya.org</p>
-                        <p><strong>Phone:</strong> +61 2 9876 5432</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Contact Australia Chapter</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="chapter-card">
-                        <div class="d-flex align-items-center mb-3">
-                            <img src="https://flagcdn.com/w80/de.png" class="chapter-flag" alt="Germany Flag">
-                            <h5 class="mb-0">Germany</h5>
-                        </div>
-                        <p><strong>Address:</strong> 29 Nigerian Center, Berlin, Germany</p>
-                        <p><strong>Email:</strong> germany@ndya.org</p>
-                        <p><strong>Phone:</strong> +49 30 123 45678</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Contact Germany Chapter</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="chapter-card">
-                        <div class="d-flex align-items-center mb-3">
-                            <img src="https://flagcdn.com/w80/za.png" class="chapter-flag" alt="South Africa Flag">
-                            <h5 class="mb-0">South Africa</h5>
-                        </div>
-                        <p><strong>Address:</strong> 56 Pan-African Blvd, Johannesburg, SA</p>
-                        <p><strong>Email:</strong> southafrica@ndya.org</p>
-                        <p><strong>Phone:</strong> +27 11 234 5678</p>
-                        <a href="#" class="btn btn-outline-primary btn-sm">Contact SA Chapter</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
     <!-- FAQ Section -->
-     <section class="py-5 bg-light-custom">
+    <section class="py-5">
         <div class="container">
-            <h2 class="section-title text-center">Frequently Asked Questions</h2>
+            <h2 class="section-title text-center fade-in">Frequently Asked Questions</h2>
+            <div class="blue-divider"></div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <!-- <div class="faq-item">
-                        <div class="faq-question">
-                            How can I become a member of NDYA?
-                            <i class="fas fa-chevron-down faq-toggle"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p>To become a member of NDYA, you can fill out our online membership form on our website or contact your local chapter directly. Membership is open to Nigerian youth aged 16-35 living in the diaspora.</p>
-                        </div>
-                    </div>
-                     -->
-                    <div class="faq-item">
+                    <div class="faq-item fade-in">
                         <div class="faq-question">
                             What volunteer opportunities are available?
                             <i class="fas fa-chevron-down faq-toggle"></i>
@@ -517,44 +666,34 @@
                         </div>
                     </div>
                     
-                    <!-- <div class="faq-item">
-                        <div class="faq-question">
-                            How can I start an NDYA chapter in my city?
-                            <i class="fas fa-chevron-down faq-toggle"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Starting a new chapter requires at least 10 interested members in your area and a committed leadership team. Contact our headquarters with details about your location and the Nigerian youth community there. We'll guide you through the process.</p>
-                        </div>
-                    </div> -->
-                    
-                    <div class="faq-item">
+                    <div class="faq-item fade-in">
                         <div class="faq-question">
                             Does NDYA offer scholarships or educational support?
                             <i class="fas fa-chevron-down faq-toggle"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>Yes, we offer various scholarship opportunities, mentorship programs, and career development support. These are typically announced through our newsletter and social media channels. </p>
+                            <p>Yes, we offer various scholarship opportunities, mentorship programs, and career development support. These are typically announced through our newsletter and social media channels.</p>
                         </div>
                     </div>
                     
-                    <div class="faq-item">
+                    <div class="faq-item fade-in">
                         <div class="faq-question">
-                             can my organization partner with NDYA?
+                            How can my organization partner with NDYA?
                             <i class="fas fa-chevron-down faq-toggle"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>We welcome partnerships with organizations that share our mission.</p>
+                            <p>We welcome partnerships with organizations that share our mission. Please contact us through the form above with details about your organization and potential collaboration ideas.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section> 
+    </section>
 
     <!-- Call to Action -->
-    <section class="py-5 bg-primary text-white">
-        <div class="container text-center">
-            <h2 class="mb-4">Stay Connected With NDYA</h2>
+    <section class="cta-section">
+        <div class="container text-center cta-content">
+            <h2 class="mb-4 fw-bold">Stay Connected With NDYA</h2>
             <p class="lead mb-4">Follow us on social media and subscribe to our newsletter to stay updated on our programs and events.</p>
             <div class="social-icons justify-content-center mb-4">
                 <a href="#"><i class="fab fa-facebook"></i></a>
@@ -575,48 +714,60 @@
     </section>
 
     <!-- Footer -->
-   <footer>
+         <footer>
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h4>NDYA</h4>
-                    <p>Dream, Believe and Achieve.</p>
-                    <div class="social-icons">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-logo">NDYA</div>
+                    <p class="footer-tagline">Dream, Believe and Achieve.</p>
+                    <p>Empowering Nigerian youths in the diaspora to become leaders and change-makers in their communities.</p>
+                    <div class="social-icons mt-4">
                         <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
-                        <li><a href="about.html" class="text-white text-decoration-none">About</a></li>
-                        <li><a href="programs.html" class="text-white text-decoration-none">Programs</a></li>
-                        <li><a href="gallery.html" class="text-white text-decoration-none">Gallery</a></li>
-                        <li><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="publication.html">Programs</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h5>Contact Info</h5>
-                    <p><i class="fas fa-map-marker-alt me-2"></i> Beautiful Plaza, Dawaki, Abuja FCT</p>
-                    <p><i class="fas fa-phone me-2"></i> +234 704 547 5193</p>
-                    <p><i class="fas fa-envelope me-2"></i> princedonvic1@gmail.com</p>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="footer-heading">Contact Info</h5>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Beautiful Plaza, Dawaki, Abuja FCT</p>
+                        <p><i class="fas fa-phone"></i> +234 904 286 9357, +90 533 834 06 40 </p>
+                        <p><i class="fas fa-envelope"></i> princedonvic1@gmail.com</p>
+                    </div>
                 </div>
             </div>
-            <hr class="my-4">
-            <div class="text-center">
+            <div class="copyright">
                 <p>&copy; 2023 Nigerian Diaspora Youth Ambassador. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-
     <!-- Bootstrap JS and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('.navbar').classList.add('scrolled');
+            } else {
+                document.querySelector('.navbar').classList.remove('scrolled');
+            }
+        });
+
         // FAQ Accordion Functionality
         document.addEventListener('DOMContentLoaded', function() {
             const faqItems = document.querySelectorAll('.faq-item');
@@ -660,6 +811,26 @@
                 alert('Thank you for your message! We will get back to you soon.');
                 contactForm.reset();
             });
+
+            // Fade in animation on scroll
+            function checkFadeIn() {
+                const fadeElements = document.querySelectorAll('.fade-in');
+                
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+
+            // Initial check for elements in view
+            checkFadeIn();
+            
+            // Add scroll event listener for fade-in animations
+            window.addEventListener('scroll', checkFadeIn);
         });
     </script>
 </body>
