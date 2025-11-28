@@ -12,11 +12,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #008751; /* Nigerian Green */
+            --primary-color: #1a4b8c; /* Deep Blue */
             --secondary-color: #FFFFFF; /* White */
-            --accent-color: #E6BE8A; /* Gold */
+            --accent-color: #f8c471; /* Golden Yellow */
+            --light-blue: #4a8cd6;
+            --dark-blue: #0d3a6c;
             --text-color: #333333;
-            --light-bg: #f8f9fa;
+            --light-bg: #f0f5ff;
         }
         
         body {
@@ -26,36 +28,93 @@
         
         .navbar {
             background-color: var(--primary-color) !important;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
         
         .navbar-brand, .nav-link {
             color: var(--secondary-color) !important;
+            font-weight: 500;
+        }
+        
+        .nav-link {
+            position: relative;
+            margin: 0 5px;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after,
+        .nav-link.active:after {
+            width: 100%;
         }
         
         .nav-link:hover {
             color: var(--accent-color) !important;
         }
         
-        .breadcrumb {
-            background-color: var(--light-bg);
-            padding: 10px 15px;
-            border-radius: 5px;
-        }
-        
         .page-header {
-            background: linear-gradient(rgba(0, 135, 81, 0.8), rgba(0, 135, 81, 0.9)), url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(135deg, rgba(26, 75, 140, 0.85) 0%, rgba(13, 58, 108, 0.85) 100%), url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             color: white;
-            padding: 80px 0;
+            padding: 120px 0 80px;
             text-align: center;
+            position: relative;
+        }
+        
+        .page-header:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, var(--light-bg), transparent);
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .breadcrumb {
+            background-color: var(--light-bg);
+            padding: 12px 15px;
+            border-radius: 8px;
         }
         
         .section-title {
             position: relative;
             margin-bottom: 40px;
             padding-bottom: 15px;
+            font-weight: 700;
         }
         
         .section-title:after {
@@ -64,8 +123,9 @@
             bottom: 0;
             left: 0;
             width: 80px;
-            height: 3px;
+            height: 4px;
             background-color: var(--primary-color);
+            border-radius: 2px;
         }
         
         .section-title.text-center:after {
@@ -76,21 +136,33 @@
         .btn-primary {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
+            border-radius: 50px;
+            padding: 10px 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
         
         .btn-primary:hover {
-            background-color: #006b40;
-            border-color: #006b40;
+            background-color: var(--dark-blue);
+            border-color: var(--dark-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .btn-outline-primary {
             color: var(--primary-color);
             border-color: var(--primary-color);
+            border-radius: 50px;
+            padding: 10px 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
         
         .btn-outline-primary:hover {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .bg-light-custom {
@@ -99,22 +171,27 @@
         
         .publication-card {
             background: white;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: transform 0.4s, box-shadow 0.4s;
             height: 100%;
         }
         
         .publication-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
         
         .publication-img {
             width: 100%;
             height: 200px;
             object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .publication-card:hover .publication-img {
+            transform: scale(1.05);
         }
         
         .publication-content {
@@ -130,12 +207,12 @@
         }
         
         .publication-tag {
-            background-color: var(--light-bg);
+            background-color: rgba(26, 75, 140, 0.1);
             color: var(--primary-color);
-            padding: 5px 10px;
+            padding: 5px 12px;
             border-radius: 20px;
             font-size: 0.8rem;
-            font-weight: 500;
+            font-weight: 600;
         }
         
         .publication-title {
@@ -143,6 +220,7 @@
             font-weight: 600;
             margin-bottom: 15px;
             line-height: 1.4;
+            color: var(--dark-blue);
         }
         
         .publication-excerpt {
@@ -165,6 +243,7 @@
             border-radius: 30px;
             cursor: pointer;
             transition: all 0.3s;
+            font-weight: 500;
         }
         
         .filter-btn.active, .filter-btn:hover {
@@ -175,52 +254,224 @@
         
         .newsletter-card {
             background: white;
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
             text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-card:hover {
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
         }
         
         .newsletter-icon {
             font-size: 3rem;
             color: var(--primary-color);
             margin-bottom: 20px;
+            display: inline-block;
+            padding: 15px;
+            border-radius: 50%;
+            background-color: rgba(26, 75, 140, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-card:hover .newsletter-icon {
+            background-color: var(--primary-color);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-blue) 100%);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,192C672,181,768,139,864,138.7C960,139,1056,181,1152,181.3C1248,181,1344,139,1392,117.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .btn-light {
+            background-color: white;
+            color: var(--primary-color);
+            border-radius: 50px;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-light:hover {
+            background-color: var(--light-bg);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
         
         footer {
-            background-color: var(--primary-color);
+            background-color: var(--dark-blue);
             color: var(--secondary-color);
-            padding: 40px 0 20px;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        .footer-tagline {
+            font-style: italic;
+            margin-bottom: 20px;
+            opacity: 0.9;
         }
         
         .social-icons a {
             color: var(--secondary-color);
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin-right: 15px;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
+            display: inline-block;
         }
         
         .social-icons a:hover {
             color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-heading {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-heading:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--accent-color);
+            margin-top: 4px;
+        }
+        
+        .copyright {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 40px;
+            text-align: center;
+            opacity: 0.7;
         }
         
         .pagination .page-link {
             color: var(--primary-color);
+            border-radius: 8px;
+            margin: 0 5px;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s;
         }
         
         .pagination .page-item.active .page-link {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
         }
+        
+        .pagination .page-link:hover {
+            background-color: var(--light-bg);
+            border-color: var(--primary-color);
+        }
+        
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Blue-themed elements */
+        .blue-accent {
+            color: var(--primary-color);
+        }
+        
+        .blue-divider {
+            height: 4px;
+            width: 60px;
+            background: linear-gradient(to right, var(--primary-color), var(--light-blue));
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .page-subtitle {
+                font-size: 1rem;
+            }
+            
+            .filter-buttons {
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
                 <img src="logo.webp" alt="NDYA Logo" class="me-2" style="height: 40px;">
-                NDYA
+                <span style="font-weight: 700;">NDYA</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -235,7 +486,7 @@
                     </li>
             
                     <li class="nav-item">
-                        <a class="nav-link" href="publications.html">Publications</a>
+                        <a class="nav-link active" href="publications.html">Publications</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="gallery.html">Gallery</a>
@@ -243,14 +494,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="team.html">Team</a>
                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="publication.html">publication</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="btn btn-outline-light ms-2" href="#donate">Donate</a>
+                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                        <a class="btn btn-outline-light" href="#donate">Donate</a>
                     </li>
                 </ul>
             </div>
@@ -260,8 +508,8 @@
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h1 class="display-4 fw-bold">Publications</h1>
-            <p class="lead">Explore our research, reports, and resources for Nigerian diaspora youth</p>
+            <h1 class="page-title">Publications</h1>
+            <p class="page-subtitle">Explore our research, reports, and resources for Nigerian diaspora youth</p>
         </div>
     </section>
 
@@ -282,10 +530,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    <h2 class="section-title">Our Publications</h2>
-                    <p class="mb-4">This section features NDYA’s official news releases and public statements, providing timely updates on our initiatives, events, advocacy efforts, and organizational milestones..</p>
+                    <h2 class="section-title fade-in">Our Publications</h2>
+                    <p class="mb-4 fade-in">This section features NDYA's official news releases and public statements, providing timely updates on our initiatives, events, advocacy efforts, and organizational milestones.</p>
                     
-                    <div class="filter-buttons">
+                    <div class="filter-buttons fade-in">
                         <button class="filter-btn active" data-filter="all">All Publications</button>
                         <button class="filter-btn" data-filter="research">Research Papers</button>
                         <button class="filter-btn" data-filter="reports">Annual Reports</button>
@@ -293,12 +541,12 @@
                         <button class="filter-btn" data-filter="resources">Resources</button>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 fade-in">
                     <div class="newsletter-card">
                         <div class="newsletter-icon">
                             <i class="fas fa-newspaper"></i>
                         </div>
-                        <h4>Subscribe to Our Newsletter</h4>
+                        <h4 class="blue-accent">Subscribe to Our Newsletter</h4>
                         <p>Stay updated with our latest publications, events, and opportunities.</p>
                         <div class="input-group mb-3">
                             <input type="email" class="form-control" placeholder="Enter your email">
@@ -315,7 +563,7 @@
         <div class="container">
             <div class="row" id="publications-grid">
                 <!-- Publication 1 -->
-                <div class="col-lg-4 col-md-6 mb-4" data-category="research">
+                <div class="col-lg-4 col-md-6 mb-4 fade-in" data-category="research">
                     <div class="publication-card">
                         <img src="homeicon.jpg" alt="Research Publication" class="publication-img">
                         <div class="publication-content">
@@ -323,8 +571,8 @@
                                 <span class="publication-date">June 5, 2023</span>
                                 <span class="publication-tag">Research</span>
                             </div>
-                            <h3 class="publication-title">NNDYA Congratulates President Tinubu on His Inauguration as Nigeria’s 16th President</h3>
-                            <p class="publication-excerpt">NDYA extends warm congratulations to President Bola Ahmed Tinubu on his inauguration as Nigeria’s 16th President, wishing him success in leading the nation forward.</p>
+                            <h3 class="publication-title">NDYA Congratulates President Tinubu on His Inauguration as Nigeria's 16th President</h3>
+                            <p class="publication-excerpt">NDYA extends warm congratulations to President Bola Ahmed Tinubu on his inauguration as Nigeria's 16th President, wishing him success in leading the nation forward.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <a href="https://www.vanguardngr.com/2023/06/consider-affairs-of-nigerians-in-diaspora-tinubu-told/" class="btn btn-primary" target="_blank">Read More</a>
                                 <a href="#" class="text-decoration-none"><i class="fas fa-download me-1"></i> PDF</a>
@@ -334,7 +582,7 @@
                 </div>
                 
                 <!-- Publication 2 -->
-                <div class="col-lg-4 col-md-6 mb-4" data-category="reports">
+                <div class="col-lg-4 col-md-6 mb-4 fade-in" data-category="reports">
                     <div class="publication-card">
                         <img src="excos.jpg" alt="Annual Report" class="publication-img">
                         <div class="publication-content">
@@ -353,7 +601,7 @@
                 </div>
                 
                 <!-- Publication 3 -->
-                <div class="col-lg-4 col-md-6 mb-4" data-category="resources">
+                <div class="col-lg-4 col-md-6 mb-4 fade-in" data-category="resources">
                     <div class="publication-card">
                         <img src="independemce day.jpg" alt="Resource Guide" class="publication-img">
                         <div class="publication-content">
@@ -370,63 +618,6 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Publication 4 -->
-                <!-- <div class="col-lg-4 col-md-6 mb-4" data-category="newsletters">
-                    <div class="publication-card">
-                        <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Newsletter" class="publication-img">
-                        <div class="publication-content">
-                            <div class="publication-meta">
-                                <span class="publication-date">November 5, 2022</span>
-                                <span class="publication-tag">Newsletter</span>
-                            </div>
-                            <h3 class="publication-title">NDYA Newsletter: Fall 2022 Edition</h3>
-                            <p class="publication-excerpt">Updates on our programs, member spotlights, and upcoming events in the Nigerian diaspora community.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="#" class="btn btn-primary">Read More</a>
-                                <a href="#" class="text-decoration-none"><i class="fas fa-download me-1"></i> PDF</a>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-                
-                <!-- Publication 5 -->
-                <!-- <div class="col-lg-4 col-md-6 mb-4" data-category="research">
-                    <div class="publication-card">
-                        <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Research Publication" class="publication-img">
-                        <div class="publication-content">
-                            <div class="publication-meta">
-                                <span class="publication-date">September 20, 2022</span>
-                                <span class="publication-tag">Research</span>
-                            </div>
-                            <h3 class="publication-title">Economic Contributions of Nigerian Diaspora Youth</h3>
-                            <p class="publication-excerpt">An analysis of the economic impact and entrepreneurial activities of young Nigerians living abroad.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="#" class="btn btn-primary">Read More</a>
-                                <a href="#" class="text-decoration-none"><i class="fas fa-download me-1"></i> PDF</a>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-                
-                <!-- Publication 6 -->
-                <!-- <div class="col-lg-4 col-md-6 mb-4" data-category="resources">
-                    <div class="publication-card">
-                        <img src="https://images.unsplash.com/photo-1551836026-d5c55ac4d66f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Resource Guide" class="publication-img">
-                        <div class="publication-content">
-                            <div class="publication-meta">
-                                <span class="publication-date">August 15, 2022</span>
-                                <span class="publication-tag">Resource</span>
-                            </div>
-                            <h3 class="publication-title">Mental Health Resources for Diaspora Youth</h3>
-                            <p class="publication-excerpt">A guide to mental wellness and support services available for young Nigerians navigating life abroad.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="#" class="btn btn-primary">Read More</a>
-                                <a href="#" class="text-decoration-none"><i class="fas fa-download me-1"></i> PDF</a>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
             
             <!-- Pagination -->
@@ -449,17 +640,18 @@
     <!-- Featured Publication -->
     <section class="py-5">
         <div class="container">
-            <h2 class="section-title text-center">Featured Publication</h2>
+            <h2 class="section-title text-center fade-in">Featured Publication</h2>
+            <div class="blue-divider"></div>
             <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <img src="image5.jpg" alt="Featured Publication" class="img-fluid rounded">
+                <div class="col-lg-6 mb-4 mb-lg-0 fade-in">
+                    <img src="image5.jpg" alt="Featured Publication" class="img-fluid rounded shadow">
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 fade-in">
                     <span class="publication-tag mb-3 d-inline-block">Research Report</span>
-                    <h3 class="mb-3">NDYA Raises Concern Over Bank Delays in ‘Form A’ Processing for Nigerians Abroad</h3>
-                    <p class="mb-4">NDYA reports growing concerns from Nigerians in the diaspora over significant delays in banks’ processing of ‘Form A’ transactions. These delays are affecting students, workers, and families who rely on timely foreign exchange approvals..</p>
+                    <h3 class="mb-3 blue-accent">NDYA Raises Concern Over Bank Delays in 'Form A' Processing for Nigerians Abroad</h3>
+                    <p class="mb-4">NDYA reports growing concerns from Nigerians in the diaspora over significant delays in banks' processing of 'Form A' transactions. These delays are affecting students, workers, and families who rely on timely foreign exchange approvals.</p>
                     <div class="mb-4">
-                        <h5>Key Findings:</h5>
+                        <h5 class="blue-accent">Key Findings:</h5>
                         <ul>
                             <li>Prolonged bank delays are disrupting tuition payments</li>
                             <li>Students and workers are facing financial strain due to untimely access to approved funds.</li>
@@ -474,47 +666,51 @@
     </section>
 
     <!-- Call to Action -->
-    <section class="py-5 bg-primary text-white">
-        <div class="container text-center">
-            <h2 class="mb-4">Contribute to Our Publications</h2>
+    <section class="cta-section">
+        <div class="container text-center cta-content">
+            <h2 class="mb-4 fw-bold">Contribute to Our Publications</h2>
             <p class="lead mb-4">Are you a researcher, writer, or expert with insights on Nigerian diaspora youth? We welcome contributions to our publications.</p>
             <a href="contact.html" class="btn btn-light btn-lg">Get In Touch</a>
         </div>
     </section>
 
     <!-- Footer -->
-  <footer>
+    <footer>
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h4>NDYA</h4>
-                    <p>Dream, Believe and Achieve.</p>
-                    <div class="social-icons">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-logo">NDYA</div>
+                    <p class="footer-tagline">Dream, Believe and Achieve.</p>
+                    <p>Empowering Nigerian youths in the diaspora to become leaders and change-makers in their communities.</p>
+                    <div class="social-icons mt-4">
                         <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
-                        <li><a href="about.html" class="text-white text-decoration-none">About</a></li>
-                        <li><a href="programs.html" class="text-white text-decoration-none">Programs</a></li>
-                        <li><a href="gallery.html" class="text-white text-decoration-none">Gallery</a></li>
-                        <li><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="publication.html">Programs</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h5>Contact Info</h5>
-                    <p><i class="fas fa-map-marker-alt me-2"></i> Beautiful Plaza, Dawaki, Abuja FCT</p>
-                    <p><i class="fas fa-phone me-2"></i> +234 704 547 5193</p>
-                    <p><i class="fas fa-envelope me-2"></i> princedonvic1@gmail.com</p>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="footer-heading">Contact Info</h5>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Beautiful Plaza, Dawaki, Abuja FCT</p>
+                        <p><i class="fas fa-phone"></i> +234 904 286 9357, +90 533 834 06 40 </p>
+                        <p><i class="fas fa-envelope"></i> princedonvic1@gmail.com</p>
+                    </div>
                 </div>
             </div>
-            <hr class="my-4">
-            <div class="text-center">
+            <div class="copyright">
                 <p>&copy; 2023 Nigerian Diaspora Youth Ambassador. All rights reserved.</p>
             </div>
         </div>
@@ -524,6 +720,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('.navbar').classList.add('scrolled');
+            } else {
+                document.querySelector('.navbar').classList.remove('scrolled');
+            }
+        });
+
         // Filter functionality for publications
         document.addEventListener('DOMContentLoaded', function() {
             const filterButtons = document.querySelectorAll('.filter-btn');
@@ -548,6 +753,26 @@
                     });
                 });
             });
+
+            // Fade in animation on scroll
+            function checkFadeIn() {
+                const fadeElements = document.querySelectorAll('.fade-in');
+                
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+
+            // Initial check for elements in view
+            checkFadeIn();
+            
+            // Add scroll event listener for fade-in animations
+            window.addEventListener('scroll', checkFadeIn);
         });
     </script>
 </body>
