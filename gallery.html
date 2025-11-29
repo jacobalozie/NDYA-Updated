@@ -303,6 +303,7 @@
             font-size: 1.5rem;
             transition: all 0.3s;
             border: 3px solid white;
+            cursor: pointer;
         }
         
         .video-thumbnail:hover .video-play-btn {
@@ -494,6 +495,24 @@
                 margin-bottom: 10px;
             }
         }
+
+        /* Video Player Fixes */
+        #video-player {
+            width: 100%;
+            height: auto;
+            max-height: 70vh;
+            background: #000;
+            display: block;
+        }
+        
+        .video-modal-content {
+            background: transparent;
+            border: none;
+        }
+        
+        .video-modal-body {
+            padding: 0;
+        }
     </style>
 </head>
 <body>
@@ -581,100 +600,460 @@
             <div class="row" id="gallery-container">
                 <!-- Event 1 -->
                 <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="events">
-                    <img src="excos.jpg" alt="Youth Leadership Summit">
+                    <img src="pictures/pic1.jpg" alt="Youth Leadership Summit">
                     <div class="gallery-overlay">
-                        <h5>Youth Leadership Summit 2023</h5>
-                        <p>Annual gathering of young Nigerian leaders for networking and development</p>
-                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="excos.jpg" data-title="Youth Leadership Summit 2023" data-description="Annual gathering of young Nigerian leaders for networking and development">View Larger</button>
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic1.jpg" data-title="Youth Leadership Summit 2023" data-description="Annual gathering of young Nigerian leaders for networking and development">View Larger</button>
                     </div>
                 </div>
                 
                 <!-- Event 2 -->
                 <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="programs">
-                    <img src="image2.jpg" alt="Mentorship Program">
+                    <img src="pictures/pic2.jpg" alt="Mentorship Program">
                     <div class="gallery-overlay">
                         <h5>Mentorship Program Session</h5>
                         <p>One-on-one guidance between experienced professionals and youth</p>
-                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="image2.jpg" data-title="Mentorship Program Session" data-description="One-on-one guidance between experienced professionals and youth">View Larger</button>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic2.jpg" data-title="Mentorship Program Session" data-description="One-on-one guidance between experienced professionals and youth">View Larger</button>
                     </div>
                 </div>
                 
                 <!-- Event 3 -->
                 <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="cultural">
-                    <img src="image6.jpg" alt="Cultural Festival">
+                    <img src="pictures/pic3.jpg" alt="Cultural Festival">
                     <div class="gallery-overlay">
-                        <h5>Nigerian Cultural Festival</h5>
-                        <p>Celebrating Nigerian heritage through music, dance, and traditional attire</p>
-                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="image6.jpg" data-title="Nigerian Cultural Festival" data-description="Celebrating Nigerian heritage through music, dance, and traditional attire">View Larger</button>
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic3.jpg" data-title="Nigerian Cultural Festival" data-description="Celebrating Nigerian heritage through music, dance, and traditional attire">View Larger</button>
                     </div>
                 </div>
                 
                 <!-- Event 4 -->
                 <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
-                    <img src="image13.jpg" alt="Community Service">
+                    <img src="pictures/pic4.jpg" alt="Community Service">
                     <div class="gallery-overlay">
                         <h5>Community Service Day</h5>
                         <p>NDYA members volunteering at local community centers</p>
-                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="image13.jpg" data-title="Community Service Day" data-description="NDYA members volunteering at local community centers">View Larger</button>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic4.jpg" data-title="Community Service Day" data-description="NDYA members volunteering at local community centers">View Larger</button>
                     </div>
                 </div>
                 
                 <!-- Event 5 -->
                 <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="leadership">
-                    <img src="homeicon.jpg" alt="Leadership Workshop">
+                    <img src="pictures/pic5.jpg" alt="Leadership Workshop">
                     <div class="gallery-overlay">
                         <h5>Leadership Workshop</h5>
                         <p>Interactive session on developing leadership skills for young Nigerians</p>
-                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="homeicon.jpg" data-title="Leadership Workshop" data-description="Interactive session on developing leadership skills for young Nigerians">View Larger</button>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic5.jpg" data-title="Leadership Workshop" data-description="Interactive session on developing leadership skills for young Nigerians">View Larger</button>
                     </div>
                 </div>
 
                 <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
-                    <img src="image17.jpg" alt="Leadership Workshop">
+                    <img src="pictures/pic6.jpg" alt="Leadership Workshop">
                     <div class="gallery-overlay">
                         <h5>Community Outreach</h5>
                         <p>Connecting with local communities to understand their needs</p>
-                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="image17.jpg" data-title="Community Outreach" data-description="Connecting with local communities to understand their needs">View Larger</button>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic6.jpg" data-title="Community Outreach" data-description="Connecting with local communities to understand their needs">View Larger</button>
                     </div>
                 </div>
                 
                 <!-- Event 6 -->
                 <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="programs">
-                    <img src="image19.jpg" alt="Career Fair">
+                    <img src="pictures/pic8.jpg" alt="Career Fair">
                     <div class="gallery-overlay">
-                        <h5>Annual Career Fair</h5>
-                        <p>Connecting Nigerian youth with employers and career opportunities</p>
-                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="image19.jpg" data-title="Annual Career Fair" data-description="Connecting Nigerian youth with employers and career opportunities">View Larger</button>
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic8.jpg" data-title="Annual Career Fair" data-description="Connecting Nigerian youth with employers and career opportunities">View Larger</button>
                     </div>
                 </div>
                 
                 <!-- Event 7 -->
                 <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="events">
-                    <img src="image19.jpg" alt="Award Ceremony">
+                    <img src="pictures/pic7.jpg" alt="Award Ceremony">
                     <div class="gallery-overlay">
                         <h5>Excellence Awards</h5>
                         <p>Recognizing outstanding achievements of Nigerian diaspora youth</p>
-                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="image19.jpg" data-title="Excellence Awards" data-description="Recognizing outstanding achievements of Nigerian diaspora youth">View Larger</button>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic7.jpg" data-title="Excellence Awards" data-description="Recognizing outstanding achievements of Nigerian diaspora youth">View Larger</button>
                     </div>
                 </div>
                 
                 <!-- Event 8 -->
                 <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="cultural">
-                    <img src="image23.jpg" alt="Traditional Attire">
+                    <img src="pictures/pic9.jpg" alt="Traditional Attire">
                     <div class="gallery-overlay">
                         <h5>Cultural Day Celebration</h5>
                         <p>Showcasing the diversity of Nigerian traditional attire and customs</p>
-                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="image23.jpg" data-title="Cultural Day Celebration" data-description="Showcasing the diversity of Nigerian traditional attire and customs">View Larger</button>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic9.jpg" data-title="Cultural Day Celebration" data-description="Showcasing the diversity of Nigerian traditional attire and customs">View Larger</button>
                     </div>
                 </div>
                 
                 <!-- Event 9 -->
                 <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
-                    <img src="image24.jpg" alt="Networking Event">
+                    <img src="pictures/pic10.jpg" alt="Networking Event">
                     <div class="gallery-overlay">
-                        <h5>Networking Mixer</h5>
-                        <p>Building connections between Nigerian professionals and youth</p>
-                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="image24.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic10.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic11.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic11.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic12.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic12.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic13.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic13.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic14.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic14.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic15.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic15.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic16.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic16.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic17.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic17.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic18.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic18.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic20.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic20.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic21.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic21.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic22.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic22.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic23.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic23.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic24.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic24.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic25.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic25.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic26.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic26.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic27.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic27.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic28.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic28.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic29.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic29.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic30.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic30.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic31.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic31.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic32.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic32.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic33.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic33.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic34.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic34.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic36.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic36.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic37.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic37.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic38.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic38.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic41.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic41.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic40.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic40.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic42.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic42.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic43.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic43.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic45.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic45.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic46.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic46.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic47.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic47.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic48.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic48.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic49.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic49.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic50.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic50.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic51.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic51.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic52.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic52.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic54.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic54.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 gallery-item fade-in" data-category="community">
+                    <img src="pictures/pic53.jpg" alt="Networking Event">
+                    <div class="gallery-overlay">
+                        <h5></h5>
+                        <p></p>
+                        <button class="btn btn-light btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="pictures/pic53.jpg" data-title="Networking Mixer" data-description="Building connections between Nigerian professionals and youth">View Larger</button>
                     </div>
                 </div>
             </div>
@@ -694,43 +1073,60 @@
                 <div class="col-md-6 col-lg-4 fade-in">
                     <div class="video-item">
                         <div class="video-thumbnail">
-                            <img src="image3.jpg" alt="Leadership Summit">
-                            <div class="video-play-btn" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                            <img src="pictures/independemce day.jpg" alt="Leadership Summit">
+                            <div class="video-play-btn" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="Videos/indepoendenceday.mp4">
                                 <i class="fas fa-play"></i>
                             </div>
                         </div>
                         <div class="video-info">
-                            <h5 class="blue-accent">Leadership Summit 2023 Highlights</h5>
-                            <p class="text-muted">Watch the highlights from our annual Youth Leadership Summit</p>
+                            <h5 class="blue-accent">Independence Day Celebration</h5>
+                            <p class="text-muted">Watch the highlights from our 1st October celebration </p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="col-md-6 col-lg-4 fade-in">
-                    <div class="video-item">
-                        <div class="video-thumbnail">
-                            <img src="image11.jpg" alt="Cultural Festival">
-                            <div class="video-play-btn" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </div>
-                        <div class="video-info">
-                            <h5 class="blue-accent">Nigerian Cultural Festival</h5>
-                            <p class="text-muted">Experience the vibrant celebration of Nigerian culture</p>
-                        </div>
-                    </div>
-                </div>
                 
                 <div class="col-md-6 col-lg-4 fade-in">
                     <div class="video-item">
                         <div class="video-thumbnail">
-                            <img src="image4.jpg" alt="Mentorship Stories">
-                            <div class="video-play-btn" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                            <img src="pictures/pic4.jpg" alt="Cultural Festival">
+                            <div class="video-play-btn" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="videos/football tournament.mp4">
                                 <i class="fas fa-play"></i>
                             </div>
                         </div>
                         <div class="video-info">
-                            <h5 class="blue-accent">Mentorship Success Stories</h5>
+                            <h5 class="blue-accent">Football Tournament Highlights</h5>
+                            <p class="text-muted">Experience the energy and excitement from our community football event, showcasing teamwork, talent, and youth engagement</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 fade-in">
+                    <div class="video-item">
+                        <div class="video-thumbnail">
+                            <img src="pictures/pic40.jpg" alt="Cultural Festival">
+                            <div class="video-play-btn" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="videos/nidcom.mp4">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h5 class="blue-accent">NDICOM Visit Highlights</h5>
+                            <p class="text-muted">ighlights from our visit to NDICOM, fostering learning, collaboration, and youth empowerment</p>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="col-md-6 col-lg-4 fade-in">
+                    <div class="video-item">
+                        <div class="video-thumbnail">
+                            <img src="pictures/pic31.jpg" alt="Mentorship Stories">
+                            <div class="video-play-btn" data-bs-toggle="modal" data-bs-target="#videoModal" data-video="videos/awards.mp4">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <h5 class="blue-accent">Mentorship  Awards</h5>
                             <p class="text-muted">Hear from our mentors and mentees about their experiences</p>
                         </div>
                     </div>
@@ -770,22 +1166,22 @@
     <!-- Video Modal -->
     <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
+            <div class="modal-content video-modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="videoModalLabel">Video</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body p-0">
-                    <div class="ratio ratio-16x9">
-                        <iframe id="video-frame" src="" allowfullscreen></iframe>
-                    </div>
+                <div class="modal-body video-modal-body">
+                    <video id="video-player" controls>
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer>
+   <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
@@ -793,11 +1189,11 @@
                     <p class="footer-tagline">Dream, Believe and Achieve.</p>
                     <p>Empowering Nigerian youths in the diaspora to become leaders and change-makers in their communities.</p>
                     <div class="social-icons mt-4">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <!-- <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a> -->
+                        <a href="https://www.instagram.com/ndyahq?igsh=MTVtZWkzejhnbmQ2Mw==" target="_blank"><i class="fab fa-instagram" ></i></a>
+                        <!-- <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a> -->
                     </div>
                 </div>
                 <div class="col-lg-4 mb-4">
@@ -821,7 +1217,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 Nigerian Diaspora Youth Ambassador. All rights reserved.</p>
+                <p>© <span id="year"></span> Nigerian Diaspora Youth Ambassador. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -839,7 +1235,7 @@
             }
         });
 
-        // Gallery Filter Functionality
+        // Gallery Functionality
         document.addEventListener('DOMContentLoaded', function() {
             const filterButtons = document.querySelectorAll('.gallery-filter .btn');
             const galleryItems = document.querySelectorAll('.gallery-item');
@@ -887,14 +1283,19 @@
                 const button = event.relatedTarget;
                 const videoSrc = button.getAttribute('data-video');
                 
-                const videoFrame = videoModal.querySelector('#video-frame');
-                videoFrame.src = videoSrc;
+                const videoPlayer = document.getElementById('video-player');
+                videoPlayer.src = videoSrc;
+                videoPlayer.load(); // This ensures the video loads properly
+                
+                console.log('Loading video:', videoSrc); // For debugging
             });
             
             // Reset video when modal is closed
             videoModal.addEventListener('hidden.bs.modal', function() {
-                const videoFrame = videoModal.querySelector('#video-frame');
-                videoFrame.src = '';
+                const videoPlayer = document.getElementById('video-player');
+                videoPlayer.pause();
+                videoPlayer.currentTime = 0;
+                videoPlayer.src = '';
             });
             
             // Load More Photos Functionality
@@ -902,28 +1303,43 @@
             loadMoreBtn.addEventListener('click', function() {
                 // In a real implementation, this would load more images from a server
                 // For this example, we'll just show an alert
-                alert('More photos would be loaded from the server in a real implementation.');
+                // alert('More photos would be loaded from the server in a real implementation.');
             });
 
-            // Fade in animation on scroll
-            function checkFadeIn() {
-                const fadeElements = document.querySelectorAll('.fade-in');
-                
-                fadeElements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const elementVisible = 150;
-                    
-                    if (elementTop < window.innerHeight - elementVisible) {
-                        element.classList.add('visible');
-                    }
-                });
-            }
-
-            // Initial check for elements in view
-            checkFadeIn();
+            // Initialize animations - Show all content immediately but with fade effect
+            // Make all fade-in elements visible immediately with staggered delay
+            const fadeElements = document.querySelectorAll('.fade-in');
             
-            // Add scroll event listener for fade-in animations
-            window.addEventListener('scroll', checkFadeIn);
+            fadeElements.forEach((element, index) => {
+                // Add a small staggered delay for visual appeal (optional)
+                setTimeout(() => {
+                    element.classList.add('visible');
+                }, index * 100); // 100ms delay between each element
+            });
+        });
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        // Add this after your video modal functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Test if video files exist
+            const videoButtons = document.querySelectorAll('.video-play-btn');
+            videoButtons.forEach(button => {
+                const videoSrc = button.getAttribute('data-video');
+                console.log('Video button found:', videoSrc);
+                
+                // Test if video file exists
+                fetch(videoSrc)
+                    .then(response => {
+                        if (response.ok) {
+                            console.log('Video file exists:', videoSrc);
+                        } else {
+                            console.error('Video file not found:', videoSrc);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error checking video file:', videoSrc, error);
+                    });
+            });
         });
     </script>
 </body>

@@ -675,7 +675,7 @@
     </section>
 
     <!-- Footer -->
-<footer>
+ <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
@@ -683,11 +683,11 @@
                     <p class="footer-tagline">Dream, Believe and Achieve.</p>
                     <p>Empowering Nigerian youths in the diaspora to become leaders and change-makers in their communities.</p>
                     <div class="social-icons mt-4">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <!-- <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a> -->
+                        <a href="https://www.instagram.com/ndyahq?igsh=MTVtZWkzejhnbmQ2Mw==" target="_blank"><i class="fab fa-instagram" ></i></a>
+                        <!-- <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a> -->
                     </div>
                 </div>
                 <div class="col-lg-4 mb-4">
@@ -711,7 +711,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 Nigerian Diaspora Youth Ambassador. All rights reserved.</p>
+                <p>© <span id="year"></span> Nigerian Diaspora Youth Ambassador. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -720,60 +720,52 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
-                document.querySelector('.navbar').classList.add('scrolled');
-            } else {
-                document.querySelector('.navbar').classList.remove('scrolled');
-            }
-        });
+            // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            document.querySelector('.navbar').classList.add('scrolled');
+        } else {
+            document.querySelector('.navbar').classList.remove('scrolled');
+        }
+    });
 
-        // Filter functionality for publications
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const publicationItems = document.querySelectorAll('#publications-grid > div');
-            
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    const filterValue = this.getAttribute('data-filter');
-                    
-                    publicationItems.forEach(item => {
-                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                            item.style.display = 'block';
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
-                });
-            });
-
-            // Fade in animation on scroll
-            function checkFadeIn() {
-                const fadeElements = document.querySelectorAll('.fade-in');
+    // Filter functionality for publications
+    document.addEventListener('DOMContentLoaded', function() {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const publicationItems = document.querySelectorAll('#publications-grid > div');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
                 
-                fadeElements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const elementVisible = 150;
-                    
-                    if (elementTop < window.innerHeight - elementVisible) {
-                        element.classList.add('visible');
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const filterValue = this.getAttribute('data-filter');
+                
+                publicationItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
                     }
                 });
-            }
-
-            // Initial check for elements in view
-            checkFadeIn();
-            
-            // Add scroll event listener for fade-in animations
-            window.addEventListener('scroll', checkFadeIn);
+            });
         });
+
+        // Initialize animations - Show all content immediately but with fade effect
+        // Make all fade-in elements visible immediately with staggered delay
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        fadeElements.forEach((element, index) => {
+            // Add a small staggered delay for visual appeal (optional)
+            setTimeout(() => {
+                element.classList.add('visible');
+            }, index * 100); // 100ms delay between each element
+        });
+    });
+     document.getElementById("year").textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
